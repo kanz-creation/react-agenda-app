@@ -28,7 +28,7 @@ export default class Main extends React.Component {
         <div>
           <UserTask userTask={this.userTask} />
           <br />
-          <TaskList />
+          <TaskList tasks={this.state.tasks} />
         </div>
       </div>
     );
