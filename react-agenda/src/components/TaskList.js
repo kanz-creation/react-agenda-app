@@ -12,7 +12,12 @@ export default class taskList extends Component {
         </thead>
         <tbody>
           {this.props.tasks.map((task, index) => (
-            <TasksItem key={index} tasksItem={task} id={index} />
+            <TasksItem
+              key={index}
+              tasksItem={task}
+              id={index}
+              deleteTask={this.props.deleteTask}
+            />
           ))}
         </tbody>
       </table>

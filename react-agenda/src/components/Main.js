@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskList from './TaskList';
 import UserTask from './UserTask';
-
+import QuoteGenerator from './QuoteGenerator';
 const tasks = [];
 export default class Main extends React.Component {
   constructor(props) {
@@ -21,6 +21,11 @@ export default class Main extends React.Component {
     //changes reflted in UI
     this.setState({ tasks: tasks });
   };
+
+  deleteTask = (taskId) => {
+    tasks.splice(taskId, 1);
+    this.setState({ tasks: tasks });
+  };
   render() {
     return (
       <div>
@@ -28,7 +33,10 @@ export default class Main extends React.Component {
         <div>
           <UserTask userTask={this.userTask} />
           <br />
-          <TaskList tasks={this.state.tasks} />
+          <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} />
+        </div>
+        <div>
+          <QuoteGenerator />
         </div>
       </div>
     );
