@@ -1,41 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-function QuoteFetch() {
-  //hooks declared
-  //quote = actual saying
-  // author = who said the quote
-  //loading = true by default, changed to false when we finished fetching
+const Quote = () => {
   const [quote, setQuote] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [author, setAuthor] = useState('');
+
+  const fetchQuote = async () => {
+    const data = await fetch('https://api.quotable.io/random');
+    const jsonData = await data.json();
+    console.log(jsonData);
+    setQuote(`${jsonData.content} - ${jsonData.author}`);
+  };
 
   useEffect(() => {
-    getQuote();
-    const intervalID = setInterval(() => {
-      getQuote();
-    }, 5000);
-    return () => {
-      clearInterval(intervalID);
-    };
+    setInterval(fetchQuote, 5000);
   }, []);
-  function getQuote() {
-    //whenever app starts, perform the fetch function
-    fetch('http://quotes.rest/qod.json?category=inspire')
-      //data received in promise need to convert to json then outout console
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // quote hook assigned to actual quote + assigning valeues to hooks
-        setQuote(data.contents.quotes[0].quote);
-        setAuthor(data.contents.quotes[0].author);
-      });
-  }
-  //displays data onto screen
+
   return (
-    <>
+    <div>
       <h1>{quote}</h1>
-      <p>- {author}</p>
-    </>
+    </div>
   );
-}
-export default QuoteFetch;
+};
+export default Quote;

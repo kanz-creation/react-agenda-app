@@ -2,6 +2,7 @@ import React from 'react';
 import TaskList from './TaskList';
 import UserTask from './UserTask';
 import QuoteGenerator from './QuoteGenerator';
+import { Button } from '@material-ui/core';
 const tasks = [];
 export default class Main extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class Main extends React.Component {
     tasks.splice(taskId, 1);
     this.setState({ tasks: tasks });
   };
+
   render() {
     return (
       <div>
