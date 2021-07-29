@@ -11,7 +11,7 @@ const Quote = () => {
   };
 
   useEffect(() => {
-    setInterval(fetchQuote, 5000);
+    setInterval(fetchQuote, 10000);
   }, []);
 
   return (

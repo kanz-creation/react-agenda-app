@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import TasksItem from './TasksItem';
-import { Button } from '@material-ui/core';
+import { TableRow } from '@material-ui/core';
+import { Table } from '@material-ui/core';
+import { TableHead } from '@material-ui/core';
+import { TableBody } from '@material-ui/core';
+import { TableCell } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+
 export default class taskList extends Component {
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table style={{ width: 400, margin: 'auto' }}>
+        <TableHead>
+          <TableRow>
+            <TableCell>Task</TableCell>
+            <TableCell>Actions</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {this.props.tasks.map((task, index) => (
             <TasksItem
               key={index}
@@ -20,8 +26,8 @@ export default class taskList extends Component {
               deleteTask={this.props.deleteTask}
             />
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     );
   }
 }

@@ -3,6 +3,7 @@ import TaskList from './TaskList';
 import UserTask from './UserTask';
 import QuoteGenerator from './QuoteGenerator';
 import { Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 const tasks = [];
 export default class Main extends React.Component {
   constructor(props) {
@@ -31,7 +32,9 @@ export default class Main extends React.Component {
   render() {
     return (
       <div>
-        <h1> Today Agenda</h1>
+        <Typography align="center" variant="h2">
+          Agenda
+        </Typography>
         <div>
           <UserTask userTask={this.userTask} />
           <br />

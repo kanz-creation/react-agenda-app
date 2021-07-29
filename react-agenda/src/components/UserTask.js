@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+
 export default class userTask extends Component {
   // call props cuz = ensure this.propers is set before constructor exists
   constructor(props) {
@@ -25,16 +29,28 @@ export default class userTask extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Please enter your task"
-          value={this.state.task}
-          onChange={this.handleChange}
-          autoFocus
-        ></input>
-        <button type="submit">Add Tasks</button>
-      </form>
+      <Grid
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        container
+      >
+        <Box m={4}>
+          <form onSubmit={this.handleSubmit}>
+            <Input
+              type="text"
+              placeholder="Please enter your task"
+              value={this.state.task}
+              onChange={this.handleChange}
+              autoFocus
+            ></Input>
+            <Button type="submit" variant="contained" color="primary">
+              Add Tasks
+            </Button>
+          </form>
+        </Box>
+      </Grid>
     );
   }
 }
